@@ -31,5 +31,13 @@ namespace SharpLabs.Lb2
             base.PrintInfo();
             Console.WriteLine($"Current balance: {Balance}");
         }
+        ~Client()
+        {
+            Console.WriteLine("Deleted object information:");
+            Console.WriteLine($"Type: {typeof(Client)} \n" +
+                $"Balance statement: {Balance}" +
+                $"First Name: {FirstName} " +
+                $"Last Name: {LastName}");
+        }     
     }
 }

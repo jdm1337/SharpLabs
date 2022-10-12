@@ -24,7 +24,7 @@ public class Program
 
         }
 
-        a.Where(x => x < 50 && x % 2 == 0).ToList().ForEach(x => Console.WriteLine(x));
+        a.Where(x => x < 50 && x % 2 == 0).ToList().ForEach(x => Console.Write(x + " "));
 
         int[,] b = new int[10, 10];
 
@@ -49,7 +49,6 @@ public class Program
                 if (k == t)
                 {
                     mainDiagonal += b[k, t];
-                    
                 }
                 t++;
             }
@@ -64,8 +63,8 @@ public class Program
         {
             if (a[c] % 2 == 0 || a[c] % 10 == DateTime.UtcNow.Day)
             {
-                a[c] = (int)Math.Pow((double)a[c], Math.PI) / new Random().Next((int)Math.Pow(2, 10));
-                Console.WriteLine(a[c]);
+                a[c] = 100 - a[c];
+                Console.Write(a[c] + " ");
             }
             c++;
         }
@@ -76,6 +75,8 @@ public class Program
         OutSum(1, 2, out int sum);
         int sum1 = 0;
         RefSum(ref sum1, 1, 2);
+
+        //------------------
 
         // LB 2
         var client = new Client("Pokupat", "Pokupaev", 300);

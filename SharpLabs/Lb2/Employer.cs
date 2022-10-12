@@ -28,5 +28,14 @@
             base.PrintInfo();
             Console.WriteLine($"Title: {Title}");
         }
+
+        ~Employer()
+        {
+            Console.WriteLine("Deleted object information:");
+            Console.WriteLine($"Type: {typeof(Employer)} \n" +
+                $"Title {Title} Salary {Salary}" +
+                $"First Name: {FirstName} " +
+                $"Last Name: {LastName}");
+        }
     }
 }
