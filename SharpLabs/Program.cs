@@ -23,7 +23,7 @@ public class Program
             a[i] = r.Next(100);
 
         }
-
+        Console.WriteLine("Output of elements less than 50 and at the same time even: ");
         a.Where(x => x < 50 && x % 2 == 0).ToList().ForEach(x => Console.Write(x + " "));
 
         int[,] b = new int[10, 10];
@@ -61,7 +61,7 @@ public class Program
         int c = 0;
         do
         {
-            if (a[c] % 2 == 0 || a[c] % 10 == DateTime.UtcNow.Day)
+            if (a[c] % 2 == 0 && a[c] % 10 == DateTime.UtcNow.Day)
             {
                 a[c] = 100 - a[c];
                 Console.Write(a[c] + " ");
@@ -75,13 +75,13 @@ public class Program
         OutSum(1, 2, out int sum);
         int sum1 = 0;
         RefSum(ref sum1, 1, 2);
-
+        Console.WriteLine();
         //------------------
 
         // LB 2
         var client = new Client("Pokupat", "Pokupaev", 300);
         client.PrintInfo();
-        client.Buy("Вiploma");
+        client.Buy("Diploma");
 
         var employer = new Employer("Prodavat", "Prodavaed", "Manager", 45000);
         employer.PrintInfo();

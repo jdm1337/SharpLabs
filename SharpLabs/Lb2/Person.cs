@@ -1,6 +1,4 @@
-﻿
-
-namespace SharpLabs.Lb2
+﻿namespace SharpLabs.Lb2
 {
     public class Person
     {
