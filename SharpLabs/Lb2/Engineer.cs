@@ -1,6 +1,8 @@
-﻿namespace SharpLabs.Lb2
+﻿
+
+namespace SharpLabs.Lb2
 {
-    public class Engineer : Person
+    public class Engineer : Person, IComparable
     {
         public int WorkExperience { get; set; }
         public string Orientation { get; set; }
@@ -19,6 +21,12 @@
             Console.WriteLine("Hello, I'm student of TPU");
         }
 
+        public int CompareTo(object? o)
+        {
+            if (o is Engineer engineer) return FirstName.CompareTo(engineer.FirstName);
+            else throw new ArgumentException("Invalid value");
+        }
+
         ~Engineer()
         {
             Console.WriteLine("Deleted object information:");
@@ -27,5 +35,6 @@
                 $"First Name: {FirstName} " +
                 $"Last Name: {LastName}");
         }
+
     }
 }

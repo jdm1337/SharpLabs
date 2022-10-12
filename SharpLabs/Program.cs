@@ -83,7 +83,7 @@ public class Program
         client.PrintInfo();
         client.Buy("Diploma");
 
-        var employer = new Employer("Prodavat", "Prodavaed", "Manager", 45000);
+        var employer = new Employer("Prodavat", "Prodavaed", "Manager", 45000, 34, 19);
         employer.PrintInfo();
         employer.EditSalary(5000);
         employer.Promote();
@@ -92,6 +92,28 @@ public class Program
         var engineer = new Engineer("Durachek", "Durachkov", 3, "software developer");
         engineer.PrintInfo();
         engineer.JustEngineerIt();
+
+        // LB 3
+
+        var anotherClient = (Client)client.Clone();
+        Console.WriteLine("------");
+        anotherClient.PrintInfo();
+        Console.WriteLine("------");
+        var engineer1 = new Engineer("A", "Anov", 5, "Fireman");
+        var engineer2 = new Engineer("B", "Banov", 5, "Chiller");
+        var engineer3 = new Engineer("C", "Cianov", 5, "Sales-manager");
+
+        var listOfEngineers = new List<Engineer>() { engineer1, engineer3, engineer2 };
+        listOfEngineers.Sort();
+        listOfEngineers.ForEach(x => Console.WriteLine(x.FirstName + " " + x.LastName + " " + x.Orientation));
+
+        Console.WriteLine("------");
+
+        var weightableEmployer = new Employer("Alexey", "Alexseev", "Soldier", 45000, 23.5f, 18);
+
+        Console.WriteLine("Weight: " + weightableEmployer.DefineWeight());
+
+        Console.WriteLine("Age: " + weightableEmployer.DefineAge());
         
     }
     public static int Sum(int a, int b)

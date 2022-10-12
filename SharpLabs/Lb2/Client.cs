@@ -1,6 +1,8 @@
-﻿namespace SharpLabs.Lb2
+﻿using System.Xml.Linq;
+
+namespace SharpLabs.Lb2
 {
-    public class Client : Person
+    public class Client : Person, ICloneable
     {
         public double Balance { get; set; }
         public Client(string firstName, string lastName, double balance) : base(firstName, lastName)
@@ -30,6 +32,12 @@
             base.PrintInfo();
             Console.WriteLine($"Current balance: {Balance}");
         }
+
+        public object Clone()
+        {
+            return new Client(FirstName, LastName, Balance);
+        }
+
         ~Client()
         {
             Console.WriteLine("Deleted object information:");

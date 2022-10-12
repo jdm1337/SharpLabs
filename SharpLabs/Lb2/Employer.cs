@@ -1,14 +1,20 @@
-﻿namespace SharpLabs.Lb2
+﻿using SharpLabs.Lb3;
+
+namespace SharpLabs.Lb2
 {
-    public class Employer : Person
+    public class Employer : Person, IWeightable, IAgeable
     {
         public string Title { get; set; }
         public double Salary { get; set; }
+        public float Weight { get; set; }
+        public int Age { get; set; }
         
-        public Employer(string firstName, string lastName, string title, double salary) : base(firstName, lastName)
+        public Employer(string firstName, string lastName, string title, double salary, float weight , int age) : base(firstName, lastName)
         {
             Title = title;
-            Salary = salary;    
+            Salary = salary;
+            Weight = weight;
+            Age = age;
         }
 
         public void Promote()
@@ -27,6 +33,16 @@
         {
             base.PrintInfo();
             Console.WriteLine($"Title: {Title}");
+        }
+
+        public float DefineWeight()
+        {
+            return Weight;
+        }
+
+        public int DefineAge()
+        {
+            return Age;
         }
 
         ~Employer()
