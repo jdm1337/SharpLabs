@@ -1,4 +1,5 @@
 ﻿using SharpLabs.Lb2;
+using SharpLabs.Lb4;
 
 public class Program
 {
@@ -89,6 +90,12 @@ public class Program
         employer.Promote();
         employer.Fire();
 
+        var employer1 = new Employer("Prodavat", "Prodavaed", "Manager", 45000, 34, 19);
+        employer.PrintInfo();
+        employer.EditSalary(5000);
+        employer.Promote();
+        employer.Fire();
+
         var engineer = new Engineer("Durachek", "Durachkov", 3, "software developer");
         engineer.PrintInfo();
         engineer.JustEngineerIt();
@@ -114,7 +121,22 @@ public class Program
         Console.WriteLine("Weight: " + weightableEmployer.DefineWeight());
 
         Console.WriteLine("Age: " + weightableEmployer.DefineAge());
-        
+
+        // LB4
+
+        var clients = new MyList<Client>();
+        clients.Add(client);
+        clients.Add(anotherClient);
+
+        Console.WriteLine("Clients");
+
+        var clientList = clients.AsEnumerable().ToList();
+        clientList.ForEach(x => Console.WriteLine(x.Balance));
+
+        var employers = new MyList<Employer>();
+
+        employers.Add(employer);
+        employers.Add(employer1);
     }
     public static int Sum(int a, int b)
     {

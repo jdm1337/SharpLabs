@@ -6,6 +6,9 @@ namespace SharpLabs.Lb2
     {
         public int WorkExperience { get; set; }
         public string Orientation { get; set; }
+        public delegate void EngineerHandler(string message);
+
+        public event EngineerHandler Notify;
         public Engineer(string firstName, string lastName, int workExperience, string orientation ) : base(firstName, lastName)
         {
             WorkExperience = workExperience;
@@ -14,6 +17,7 @@ namespace SharpLabs.Lb2
         public override void PrintInfo()
         {
             base.PrintInfo();
+            Notify?.Invoke("Info was requested");
         }
 
         public void JustEngineerIt()

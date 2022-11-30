@@ -2,9 +2,13 @@
 
 namespace SharpLabs.Lb2
 {
-    public class Client : Person, ICloneable
+    public class Client : Person, ICloneable, IComparable
     {
         public double Balance { get; set; }
+
+        public delegate void ClientHandler(string message);
+
+        public event ClientHandler Notify;
         public Client(string firstName, string lastName, double balance) : base(firstName, lastName)
         {
             Balance = balance;
@@ -14,6 +18,7 @@ namespace SharpLabs.Lb2
             if (amount > 0)
             {
                 Balance += amount;
+                Notify?.Invoke($"Balance was added {Balance}");
             }
             else
             {
@@ -36,6 +41,12 @@ namespace SharpLabs.Lb2
         public object Clone()
         {
             return new Client(FirstName, LastName, Balance);
+        }
+
+        public int CompareTo(object? obj)
+        {
+            if (obj is Client client) return Balance.CompareTo(client.Balance);
+            else throw new ArgumentException("Некорректное значение параметра");
         }
 
         ~Client()
